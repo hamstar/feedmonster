@@ -55,6 +55,7 @@ Rss::Application.routes.draw do
   # root :to => 'welcome#index'
 
   match 'sources' => 'SourcesController#index'
+  match 'cron' => 'Cron#index'
 
   # See how all your routes lay out with "rake routes"
 
