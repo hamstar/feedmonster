@@ -1,4 +1,6 @@
 Rss::Application.routes.draw do
+  resources :sources
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,6 +51,8 @@ Rss::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+
+  match 'sources' => 'SourcesController#index'
 
   # See how all your routes lay out with "rake routes"
 
