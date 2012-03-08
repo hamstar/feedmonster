@@ -1,4 +1,6 @@
 Rss::Application.routes.draw do
+  resources :tags
+
   resources :sources
 
   # The priority is based upon order of creation:
