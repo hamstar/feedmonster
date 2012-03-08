@@ -4,6 +4,9 @@ class CronController < ApplicationController
 
   	@sources = Source.all
 
+	@sources.each do |source|
+		FeedEntry.get_feed( source.url )
+	end
   end
 
 end

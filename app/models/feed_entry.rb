@@ -1,4 +1,6 @@
 class FeedEntry < ActiveRecord::Base
+  has_and_belongs_to_many :tags
+
   def self.get_feed(feed_url)
     Feedzirra::Feed.fetch_and_parse(feed_url)
   end
