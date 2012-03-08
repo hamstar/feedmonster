@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Rss::Application.config.secret_token = 'fb54d1e35c5aef643e0e236570c483ae086d294e1dc8b300ddae21768c45f46c49ba1061a5ad30bc801899e0386a784afeca9f6396cfd17f5e63d749662bd9ee'
+Rss::Application.config.secret_token = 'dad797ff0dc9de8edc2a5eb7c6a8959c11af316f3705f010b509aecb55ffe211165ab1b178af4b66fe73899eaf15bb4cf2bbaffbd8e96e5b2e300dd21b87b8fc'
