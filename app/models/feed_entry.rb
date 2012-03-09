@@ -13,9 +13,27 @@ class FeedEntry < ActiveRecord::Base
       end
 
       if has_tag
-        self.tags << tag
+        self.add_tag tag
       end
     end
+  end
+
+  def add_tag(tag)
+    unless self.tags.include?(tag)
+      self.tags << tag
+    end
+  end
+
+  def get_tags_string
+    if self.tags.count == 0
+      return "None"
+    end
+
+    self.tags.each do |tag|
+      string+= tag.name
+    end
+
+    return string
   end
 
   def self.get_feed(feed_url)
@@ -33,7 +51,7 @@ class FeedEntry < ActiveRecord::Base
     entries.each do |entry|
       unless exists? :guid => entry.id
         create!(
-          :name         => entry.title,
+          :title         => entry.title,
           :summary      => entry.summary,
           :url          => entry.url,
           :published_at => entry.published,
