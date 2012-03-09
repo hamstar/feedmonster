@@ -1,11 +1,19 @@
 class CronController < ApplicationController
 
-  before_filter :check_if_there_are_sources
+  before_filter :check_if_there_are_sources, :check_if_there_are_tags
 
   def check_if_there_are_sources
     if Source.count < 1
-      return false
+      @message = "No sources defined yet"
+      render :failed
     end
+  end
+
+  def check_if_there_are_tags
+  	if Tag.count < 1
+  	  @message = "No tags defined yet"
+  	  render :failed
+  	end
   end
 
   def index
