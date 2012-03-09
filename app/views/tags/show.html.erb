@@ -5,6 +5,12 @@
   <%= @tag.name %>
 </p>
 
+<h2>Entries</h2>
+<ul>
+  <% @tag.feed_entries.each do |e| %>
+  <li><%= link_to e.title, e %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>
