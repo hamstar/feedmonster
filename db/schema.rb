@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120308135221) do
 
   create_table "feed_entries", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.text     "summary"
     t.string   "url"
     t.datetime "published_at"
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(:version => 20120308135221) do
     t.datetime "updated_at"
   end
 
-  create_table "feed_items_tags", :id => false, :force => true do |t|
-    t.integer "feed_item_id"
+  create_table "feed_entries_tags", :id => false, :force => true do |t|
+    t.integer "feed_entry_id"
     t.integer "tag_id"
   end
+
+  add_index "feed_entries_tags", ["feed_entry_id", "tag_id"], :name => "index_feed_entries_tags_on_feed_entry_id_and_tag_id"
 
   create_table "sources", :force => true do |t|
     t.string   "url"

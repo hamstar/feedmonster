@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  title: MyString
   summary: MyText
   url: MyString
-  published_at: 2012-03-08 16:34:58
+  published_at: 2012-03-10 03:27:26
   guid: MyString
 
 two:
-  name: MyString
+  title: MyString
   summary: MyText
   url: MyString
-  published_at: 2012-03-08 16:34:58
+  published_at: 2012-03-10 03:27:26
   guid: MyString
