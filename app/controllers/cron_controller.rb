@@ -2,6 +2,50 @@ class CronController < ApplicationController
 
   before_filter :check_if_there_are_sources, :check_if_there_are_tags
 
+  def index
+
+  	@sources = Source.all
+	
+	start_time = Time.now
+
+	@sources.each do |source|
+		FeedEntry.update_from_feed( source.url )
+	end
+
+	@feed_entries = FeedEntry.all :conditions => ["DATE(created_at) > DATE(?)", start_time ]
+
+	if @feed_entries.count == 0
+		@message = "No entries were created"
+		render :failed
+	end
+
+	tag_entries @feed_entries
+  end
+
+  def retag
+    
+    start_time = Time.now
+    tag_entries FeedEntry.all
+	
+	@feed_entries = FeedEntry.all :conditions => ["DATE(updated_at) > DATE(?)", start_time ]
+
+	if @feed_entries.count == 0
+		flash[:notice] = "No entries were tagged"
+	end
+	
+    render 'feed_entries/index'
+  end
+
+  private
+
+  def tag_entries(entries)
+
+	@tags = Tag.all
+	entries.each do |entry|
+		entry.check_for_tags( @tags )
+	end
+  end
+
   def check_if_there_are_sources
     if Source.count < 1
       @message = "No sources defined yet"
@@ -14,28 +58,6 @@ class CronController < ApplicationController
   	  @message = "No tags defined yet"
   	  render :failed
   	end
-  end
-
-  def index
-
-  	@sources = Source.all
-	
-	@sources.each do |source|
-		FeedEntry.update_from_feed( source.url )
-	end
-
-	if FeedEntry.count > 0
-		last_entry_id = FeedEntry.last.object_id
-	else
-		last_entry_id = 0
-	end
-
-	@feed_entries = FeedEntry.find("id > ?", last_entry_id )
-
-	@tags = Tag.all
-	@feed_entries.each do |item|
-		item.check_for_tags( @tags )
-	end
   end
 
 end
