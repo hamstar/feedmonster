@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>News</h1>
+
+<% if @tag %>
+<h2>For tag <%= @tag.name %></h2>
+<% end %>
+
+
+<p><% @tags.each do |t| %><%= link_to t.name, "/?tag=#{t.id}" %>, <%end%></p>
+
+<% @entries.each do |e| %>
+<div class="entry">
+  <p><%= e.published_at %> <%= link_to "[+]", e %> <%= link_to e.title, e.url %> (<%= e.get_tag_string %>)</p>
+</div>
+<%end%>

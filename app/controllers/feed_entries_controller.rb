@@ -10,6 +10,17 @@ class FeedEntriesController < ApplicationController
     end
   end
 
+  def view_all
+    @tags = Tag.all
+
+    if params[:tag]
+      @tag = Tag.find params[:tag]
+      @entries = @tag.feed_entries
+    else
+      @entries = FeedEntry.all
+    end
+  end
+
   # GET /feed_entries/1
   # GET /feed_entries/1.json
   def show
