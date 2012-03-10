@@ -1,7 +1,20 @@
 class FeedEntry < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
+  def self.from_entry(entry)
+    if exists? :guid => entry.id
+      array = self.all :conditions => ["guid = ?", entry.id]
+      return array.first
+    end
+    e = self.new :title         => entry.title,
+                 :summary      => entry.summary,
+                 :url          => entry.url,
+                 :published_at => entry.published,
+                 :guid         => entry.id
+  end
+
   def check_for_tags(tags)
+    found_a_tag = false
     tags.each do |tag|
       has_tag = false
       if title.downcase.include? tag.name.downcase
@@ -14,8 +27,11 @@ class FeedEntry < ActiveRecord::Base
 
       if has_tag
         self.add_tag tag
+        found_a_tag = true
       end
     end
+
+    found_a_tag
   end
 
   def add_tag(tag)

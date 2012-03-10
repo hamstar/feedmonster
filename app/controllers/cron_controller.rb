@@ -8,18 +8,17 @@ class CronController < ApplicationController
 	
 	  start_time = Time.now
 
+    @saved = Array.new
+    @tags = Tag.all
 	  @sources.each do |source|
-		  FeedEntry.update_from_feed( source.url )
+		  FeedEntry.get_feed( source.url ).entries.each do |entry|
+        e = FeedEntry.from_entry entry
+        if e.check_for_tags( @tags ) == true
+          e.save
+          @saved << e
+        end
+      end
 	  end
-
-	  @feed_entries = FeedEntry.all :conditions => ["DATE(created_at) > DATE(?)", start_time ]
-
-	  if @feed_entries.count == 0
-	  	@message = "No new entries were created"
-		  render :failed
-	  end
-
-	  tag_entries @feed_entries
   end
 
   def retag

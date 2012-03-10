@@ -5,3 +5,11 @@ Getting feeds for:
 	<li><%=source.url%></li>
 	<% end %>
 </ul>
+
+Saved Entries:
+
+<ul>
+	<% @saved.each do |e| %>
+	<li><%=e.title%></li>
+	<% end %>
+</ul>
