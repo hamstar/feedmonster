@@ -4,11 +4,11 @@ class FeedEntry < ActiveRecord::Base
   def check_for_tags(tags)
     tags.each do |tag|
       has_tag = false
-      if title.include? tag.name
+      if title.downcase.include? tag.name.downcase
         has_tag = true
       end
 
-      if summary.include? tag.name
+      if summary.downcase.include? tag.name.downcase
         has_tag = true
       end
 
@@ -24,16 +24,22 @@ class FeedEntry < ActiveRecord::Base
     end
   end
 
-  def get_tags_string
+  def get_tag_string
     if self.tags.count == 0
       return "None"
     end
 
-    self.tags.each do |tag|
-      string+= tag.name
+    self.get_tag_names.join(', ')
+  end
+
+  def get_tag_names
+    
+    names = Array.new
+    self.tags.each do |t|
+      names << t.name
     end
 
-    return string
+    names
   end
 
   def self.get_feed(feed_url)
@@ -41,7 +47,7 @@ class FeedEntry < ActiveRecord::Base
   end
 
   def self.update_from_feed(feed_url)
-    feed = Feedzirra::Feed.fetch_and_parse(feed_url)
+    feed = self.get_feed( feed_url )
     add_entries(feed.entries)
   end
   
