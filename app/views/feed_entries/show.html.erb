@@ -1,36 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @feed_entry.title %> <%= link_to "[>]", @feed_entry.url %></h1>
 <p>
-  <b>Title:</b>
-  <%= @feed_entry.title %>
+  <%= @feed_entry.published_at %> 
+  (<%= time_ago_in_words @feed_entry.published_at %> ago) | 
+  <%= raw linked_tag_string @feed_entry.tags %>
 </p>
 
-<p>
-  <b>Summary:</b>
-  <%= @feed_entry.summary %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @feed_entry.url %>
-</p>
-
-<p>
-  <b>Published at:</b>
-  <%= @feed_entry.published_at %>
-</p>
-
-<p>
-  <b>Guid:</b>
-  <%= @feed_entry.guid %>
-</p>
-
-<h2>Tags</h2>
-<ul>
-  <% @feed_entry.tags.each do |tag| %>
-  <li><%= link_to tag.name, tag %></li>
-  <% end %>
-</ul>
+<p class="summary"><%= @feed_entry.summary %></p>
 
 <%= link_to 'Edit', edit_feed_entry_path(@feed_entry) %> |
 <%= link_to 'Back', feed_entries_path %>
