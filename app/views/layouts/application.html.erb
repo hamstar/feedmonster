@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<%= yield %>
+<p>
+  <%= link_to "Home", "/" %>
+  <%= link_to "Sources", sources_path %>
+  <%= link_to "Tags", tags_path %>
+  <%= link_to "retag", "/retag" %>
+  <%= link_to "feed", "/cron" %><p>
+
+<div id="content">
+	<%= yield %>
+</div>
 
 </body>
 </html>
