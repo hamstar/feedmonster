@@ -15,10 +15,10 @@
 <% @feed_entries.each do |feed_entry| %>
   <tr>
     <td><%= feed_entry.title %></td>
-    <td><%= feed_entry.summary %></td>
+    <td><%= truncate feed_entry.summary, :length => 10 %></td>
     <td><%= feed_entry.url %></td>
     <td><%= feed_entry.published_at %></td>
-    <td><%= feed_entry.guid %></td>
+    <td><%= truncate feed_entry.guid, :length => 10 %></td>
     <td><%= link_to 'Show', feed_entry %></td>
     <td><%= link_to 'Edit', edit_feed_entry_path(feed_entry) %></td>
     <td><%= link_to 'Destroy', feed_entry, confirm: 'Are you sure?', method: :delete %></td>
