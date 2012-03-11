@@ -17,7 +17,7 @@ class FeedEntriesController < ApplicationController
       @tag = Tag.find params[:tag]
       @entries = @tag.feed_entries
     else
-      @entries = FeedEntry.all
+      @entries = FeedEntry.all :order => "published_at DESC"
     end
   end
 
