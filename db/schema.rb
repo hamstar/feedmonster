@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308135221) do
+ActiveRecord::Schema.define(:version => 20120310172126) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120308135221) do
     t.string   "guid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "has_tag"
   end
 
   create_table "feed_entries_tags", :id => false, :force => true do |t|

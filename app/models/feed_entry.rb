@@ -14,7 +14,7 @@ class FeedEntry < ActiveRecord::Base
   end
 
   def check_for_tags(tags)
-    found_a_tag = false
+    self.has_tag = false
     tags.each do |tag|
       has_tag = false
       if title.downcase.include? tag.name.downcase
@@ -27,11 +27,9 @@ class FeedEntry < ActiveRecord::Base
 
       if has_tag
         self.add_tag tag
-        found_a_tag = true
+        self.has_tag = true
       end
     end
-
-    found_a_tag
   end
 
   def add_tag(tag)
