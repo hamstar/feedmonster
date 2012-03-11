@@ -13,10 +13,9 @@ class CronController < ApplicationController
 	  @sources.each do |source|
 		  FeedEntry.get_feed( source.url ).entries.each do |entry|
         e = FeedEntry.from_entry entry
-        if e.check_for_tags( @tags ) == true
-          e.save
-          @saved << e
-        end
+        e.check_for_tags( @tags )
+        e.save
+        @saved << e
       end
 	  end
   end
