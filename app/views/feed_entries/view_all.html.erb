@@ -11,6 +11,6 @@
 
 <% @entries.each do |e| %>
 <div class="entry">
-  <p><%= e.published_at %> <%= link_to "[+]", e %> <%= link_to e.title, e.url %> (<%= raw linked_tag_string e.tags %>)</p>
+  <p><%= e.published_at %> <%= link_to "[>]", e.url %> <%= link_to truncate(e.title, :length => 70), e %> (<%= raw linked_tag_string e.tags %>)</p>
 </div>
 <%end%>
