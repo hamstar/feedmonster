@@ -10,6 +10,12 @@ class TagsController < ApplicationController
     end
   end
 
+  def view_all
+
+    @tags = Tag.all
+
+  end
+
   # GET /tags/1
   # GET /tags/1.json
   def show

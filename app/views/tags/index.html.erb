@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Entries</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @tags.each do |tag| %>
   <tr>
     <td><%= tag.name %></td>
+    <td><%= tag.feed_entries.count %></td>
     <td><%= link_to 'Show', tag %></td>
     <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
     <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>

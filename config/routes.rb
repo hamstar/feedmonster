@@ -54,13 +54,15 @@ Rss::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'feed_entries#index'
+  root :to => 'feed_entries#view_all'
 
   match 'entries' => 'feed_entries#index'
+  match 'entries/by_tag' => 'tags#view_all'
 
   match 'sources' => 'SourcesController#index'
   match 'cron' => 'Cron#index'
   match 'retag' => 'Cron#retag'
+
 
   # See how all your routes lay out with "rake routes"
 
