@@ -21,6 +21,10 @@ class FeedEntriesController < ApplicationController
     end
   end
 
+  def view_tagged
+    @entries = FeedEntry.find :all, :conditions => ["has_tag=?", true], :order => "published_at DESC"
+  end
+
   # GET /feed_entries/1
   # GET /feed_entries/1.json
   def show

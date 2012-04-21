@@ -5,3 +5,33 @@
 .summary {
 	font-size: 18px;
 }
+
+div.tagged_entry {
+	margin: 40px 0;
+}
+
+#content div.tagged_entry p {
+	margin: 0px;
+	padding:0px;
+}
+
+.tagged_entry p.summary {
+	font-size: 14px;
+	color: #ccc;
+}
+
+#content .tagged_entry .title {
+        font-family:"Trebuchet MS", Tahoma, Verdana;
+        font-size:24px;
+        text-transform:uppercase;
+	line-height: 24px;
+        letter-spacing:1px;
+        margin:0px 0px 0px 0;
+        color:#BFEF01;
+	padding:0px;
+}
+
+#content .tagged_entry .title:hover {
+	color:black;
+}
+

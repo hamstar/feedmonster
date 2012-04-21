@@ -1,8 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tag: <%= @tag.name %></h1>
-
-<% @tag.feed_entries.each do |e| %>
+<% @entries.each do |e| %>
 
 <div class="tagged_entry">
   <p><%= link_to e.title, e, :class => "title" %></p>
@@ -10,6 +6,3 @@
 </div>
 
 <% end %>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>

@@ -28,6 +28,7 @@ class FeedEntry < ActiveRecord::Base
       if has_tag
         self.add_tag tag
         self.has_tag = true
+        save
       end
     end
   end
