@@ -27,6 +27,11 @@ class TagsController < ApplicationController
     end
   end
 
+  def find_by_slug
+    @tag = Tag.find_by_slug!(params[:slug])
+    render :show
+  end
+
   # GET /tags/new
   # GET /tags/new.json
   def new
