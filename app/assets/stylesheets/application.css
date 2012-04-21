@@ -12,7 +12,148 @@
  *= require_tree .
 */
 
+/* CSS Document */
+
+body {
+	background-color:black;
+/*	background-image:url(backgrounds/body.jpg);*/
+	background-position:top;
+	background-repeat:repeat-x;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:75%;
+	color:#777;
+	margin:0;
+}
+
+* {
+	padding:0;
+	margin:0
+}
+
+#container {
+	width:770px;
+	margin:0 auto 0 auto;
+}
+
+#header {
+	height:69px;
+}
+
+#header h1 {
+	font-family:Century Gothic, "Trebuchet MS", Tahoma, Verdana;
+	font-size:250%;
+	color:#333;
+	letter-spacing:-1px;
+	padding:15px 50px 0 10px;
+	float:left;
+}
+#header h1 a {
+	color:#FFF;
+	text-decoration:none;
+}
+#header h3 {
+	padding:33px 0 5px 40px;
+	font-size:100%;
+	color:#ccc;
+	font-weight:normal;
+	margin: 0 0 0 270px; /* Adjust this value for the space between the site title and the slogan */
+}
+
+#nav {
+	margin:0 20px 0 0 !important;
+	margin:0 10px 0 0;
+	padding-bottom: 20px;
+}
+
+#nav li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:left;
+}
+
+#nav li a {
+	display:block;
+	font-size: 18px;
+	padding:10px;
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+#nav li a:hover  {
+	background: #BFEF01;
+	color: black;
+	border-radius: 10px;
+}
+
+.clear {
+	clear:both;
+}
+
 #content {
-	margin: 0px auto;
-	width: 1000px;
+	margin:20px 30px 0 0px;
+	padding:0px 30px 20px 20px;
+	border-top: 3px solid #BFEF01;
+	border-bottom: 3px solid #BFEF01;
+}
+
+#content h1 {
+	font-family:"Trebuchet MS", Tahoma, Verdana;
+	font-size:50px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	margin:10px 0 20px 0;
+	color:#BFEF01;
+}
+#content h2 {
+	font-size:16px;
+	color:#333;
+	font-family:"Trebuchet MS", Tahoma, Verdana;
+	margin:10px;
+}
+
+#content ul {
+	margin:15px 0 15px 20px;
+	padding:0;
+	border-top:1px solid #eee;
+}
+#content li {
+	margin:10px 0 10px 0;
+	padding:0 0 10px 15px;
+	list-style:none;
+	border-bottom:1px solid #eee;
+	background-image:url(backgrounds/li.gif);
+	background-position:top left;
+	background-repeat:no-repeat;
+}
+blockquote {
+	background-image:url(backgrounds/bq.jpg);
+	background-position:top;
+	background-repeat:repeat-x;
+	padding:5px 35px 5px 5px;
+	border:1px solid #eee;
+	font-family:"Trebuchet MS", Tahoma, Verdana;
+}
+
+#content a {
+	color:#ebff99;
+	padding:2px;
+	text-decoration:none;
+}
+#content a:hover {
+		background-color:#EBFF99;
+		color:#000;
+}
+a:hover {
+	text-decoration:none;
+}
+
+#footer {
+	padding:20px;
+	color:#ccc;
+	text-align:center;
+}
+#footer a {
+	color:#999;
 }

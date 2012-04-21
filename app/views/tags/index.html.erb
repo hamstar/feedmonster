@@ -1,25 +1,9 @@
-<h1>Listing tags</h1>
+<h1>Tags</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Entries</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<p class="tag_cloud">
+<% @tags.each do |t| %>
 
-<% @tags.each do |tag| %>
-  <tr>
-    <td><%= tag.name %></td>
-    <td><%= tag.feed_entries.count %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<%= link_to "#{t.name} (#{t.feed_entries.count})", "/tag/#{t.slug}" %> 
+
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tag', new_tag_path %>
+</p>

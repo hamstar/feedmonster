@@ -8,7 +8,7 @@ module TagsHelper
 
     links = Array.new
     tags.each do |t|
-      links << link_to( t.name, t )
+      links << link_to( t.name, "/tag/#{t.slug}" )
     end
 
     links.join(", ")

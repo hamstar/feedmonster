@@ -2,18 +2,12 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.order "name ASC"
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tags }
     end
-  end
-
-  def view_all
-
-    @tags = Tag.all
-
   end
 
   # GET /tags/1
@@ -25,6 +19,11 @@ class TagsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @tag }
     end
+  end
+
+  def find_by_slug
+    @tag = Tag.find_by_slug!(params[:slug])
+    render :show
   end
 
   # GET /tags/new
