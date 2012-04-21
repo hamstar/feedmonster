@@ -1,0 +1,8 @@
+<% @entries.each do |e| %>
+
+<div class="tagged_entry">
+  <p><%= link_to e.title, e, :class => "title" %></p>
+  <p class="summary">from <%= link_to URI.parse( e.url ).host, e.url %> tagged with <%= raw linked_tag_string e.tags %> about <%= time_ago_in_words(e.published_at) %> ago</p>
+</div>
+
+<% end %>
